@@ -1,0 +1,17 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Ant\\Sandbox\\": "app/Sandbox/",
+            "App\\": "app/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    },
+    "require": {
+        "illuminate/view": "^8.31",
+        "illuminate/http": "^8.31",
+        "illuminate/validation": "^8.31",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
