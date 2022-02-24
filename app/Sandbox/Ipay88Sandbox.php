@@ -57,7 +57,10 @@ class Ipay88Sandbox
 
     public function createSignatureFromString($fullStringToHash)
     {
-        return base64_encode(self::hex2bin(sha1($fullStringToHash)));
+		if (isset($this->oldVersion) && $this->oldVersion) {
+			return base64_encode(self::hex2bin(sha1($fullStringToHash)));			
+		}
+		return hash('sha256', $fullStringToHash);
     }
 
     public function process()
@@ -68,6 +71,16 @@ class Ipay88Sandbox
             throw new \Exception('Only method: ' . implode(', ', $this->allowVerb) . ' is allowed for this page. ');
         }
     }
+	
+	public function getExpectedSignature()
+	{
+		return $this->processor->getExpectedSignature();
+	}
+	
+	public function getSignatureString()
+	{
+		return $this->processor->getSignatureString();
+	}
 
     protected function canProcess()
     {

@@ -19,6 +19,7 @@ $sandbox = new \Ant\Sandbox\Ipay88Sandbox($request);
 $sandbox->config([
     'merchantCode' => $_ENV['MERCHANT_CODE'],
     'merchantKey' => $_ENV['MERCHANT_KEY'],
+	'oldVersion' => $_ENV['OLD_VERSION'] ?? null,
 ]);
 $sandbox->process();
 

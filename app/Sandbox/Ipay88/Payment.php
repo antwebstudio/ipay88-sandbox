@@ -89,6 +89,20 @@ class Payment
 			'Remark' => '',
 		];
 	}
+	
+	public function getExpectedSignature()
+	{
+		return $this->getSignature();
+	}
+	
+	public function getSignatureString()
+	{
+		$refNo = $this->request->RefNo;
+		$total = $this->request->Amount;
+		$currency = $this->request->Currency;
+
+		return $this->sandbox->merchantKey . $this->request->MerchantCode . $refNo . str_replace(['.', ','], '', $total) . $currency;
+	}
 
 	protected function isSuccessful()
 	{
@@ -111,11 +125,7 @@ class Payment
 	// Signature expected to be received
 	protected function getSignature()
 	{
-		$refNo = $this->request->RefNo;
-		$total = $this->request->Amount;
-		$currency = $this->request->Currency;
-
-		$string = $this->sandbox->merchantKey . $this->request->MerchantCode . $refNo . str_replace(['.', ','], '', $total) . $currency;
+		$string = $this->getSignatureString();
 
 		return $this->sandbox->createSignatureFromString($string);
 	}

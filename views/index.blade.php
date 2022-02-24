@@ -18,6 +18,12 @@
             <p><b>Merchant Code: </b>{{ $sandbox->merchantCode }}</p>
             <p><b>Merchant Key: </b>{{ $sandbox->merchantKey }}</p>
         </div>
+        <div class="card card-body my-3">
+			<h2>Signature</h2>
+            <p><b>Expected Signature: </b>{{ $sandbox->getExpectedSignature() }}</p>
+            <p><b>Signature String: </b>{{ $sandbox->getSignatureString() }}</p>
+			
+		</div>
     </div>
 </div>
 
