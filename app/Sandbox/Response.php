@@ -22,4 +22,9 @@ class Response
     {
         $this->params = $params;
     }
+
+    public function addParam($name, $value)
+    {
+        $this->params[$name] = $value;
+    }
 }

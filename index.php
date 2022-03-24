@@ -32,6 +32,7 @@ echo $view->render('index', [
     'request' => $request,
     'errors' => $sandbox->errors(),
     'sandbox' => $sandbox,
+    'backendSuccessResponse' => $sandbox->backendSuccessResponse(),
     'successResponse' => $sandbox->successResponse(),
     'cancelResponse' => $sandbox->cancelResponse(),
     'errorResponse' => $sandbox->errorResponse(),

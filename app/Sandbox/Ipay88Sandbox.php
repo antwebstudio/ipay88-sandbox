@@ -55,6 +55,15 @@ class Ipay88Sandbox
         return $response;
     }
 
+    public function backendSuccessResponse()
+    {
+        $response = new Response;
+        $response->setUrl($this->request->BackendURL);
+        $response->setParams($this->processor->getReturnParams());
+
+        return $response;
+    }
+
     public function createSignatureFromString($fullStringToHash)
     {
 		if (isset($this->oldVersion) && $this->oldVersion) {

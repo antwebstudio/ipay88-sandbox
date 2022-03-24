@@ -56,6 +56,16 @@
                 <button class="btn btn-success" type="submit">Return Success</button>
             </form>
 
+            <form action="{{ $backendSuccessResponse->url }}" method="{{ $backendSuccessResponse->method }}">
+                @foreach ($backendSuccessResponse->params as $key => $param)
+                    <input type="hidden" name="{{ $key }}" value="{{ $param}}"/>
+                @endforeach
+
+                <p>You should see "RECEIVEOK" in a blank white page after click this: </p>
+
+                <button class="btn btn-success" type="submit">Return Backend Success</button>
+            </form>
+
         </div>
     @endif
 
